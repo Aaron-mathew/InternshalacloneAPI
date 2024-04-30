@@ -5,6 +5,6 @@ exports.generatedErrors = (err, req, res, next) => {
         message: err.message,
         errName: err.name,
         // stack: err.stack,
-//This will handle our synchronus error {video= 0:10:42}, commit this change aaron say {Asynchronus Code error handler created}
+//This will handle our synchronus error {video= 0:10:42}
     });
 };
