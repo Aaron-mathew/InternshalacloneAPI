@@ -2,6 +2,9 @@ require("dotenv").config({ path: './.env' });
 const express = require("express");
 const app = express();
 
+// db connection
+require("./models/datbase").connectDatabase();
+
 //logger
 const logger = require("morgan");
 app.use(logger("tiny"));
