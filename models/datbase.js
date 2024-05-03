@@ -9,4 +9,3 @@ exports.connectDatabase = async () => {
     }
 }
 
-// continue video from{00:05:06}
