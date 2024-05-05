@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const studentModel = new mongoose.Schema({
     email: {
@@ -18,8 +19,14 @@ const studentModel = new mongoose.Schema({
 },
 {timestamps:true});
 
+studentModel.pre("save", function() {
+    let salt = bcrypt.genSaltSync(10);
+    this.password = bcrypt.hashSync(this.password, salt);
+});
+//will work before saving studentModel
+
 const Student = mongoose.model("student", studentModel);
 
 module.exports = Student;
 
-// continue video from{00:13:57}
+//{video:0:28:54}3rd

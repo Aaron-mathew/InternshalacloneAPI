@@ -12,3 +12,5 @@ exports.generatedErrors = (err, req, res, next) => {
 //This will handle our synchronus error 
     });
 };
+
+//{Video 0:25:31}
