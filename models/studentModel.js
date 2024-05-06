@@ -20,13 +20,19 @@ const studentModel = new mongoose.Schema({
 {timestamps:true});
 
 studentModel.pre("save", function() {
+    if(!this.isModified("password")){
+        return;
+    }//it will make the code work only when the password is changed
     let salt = bcrypt.genSaltSync(10);
     this.password = bcrypt.hashSync(this.password, salt);
 });
 //will work before saving studentModel
 
+studentModel.methods.comparepassword = function(password){
+    return bcrypt.compareSync(password, this.password);
+}//copares password using bcrypt
+
 const Student = mongoose.model("student", studentModel);
 
 module.exports = Student;
 
-//{video:0:28:54}3rd
