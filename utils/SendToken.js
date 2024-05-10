@@ -13,4 +13,3 @@ exports.sendtoken = (student, statusCode, res) => {
 
 };
 
-// {Video: 0:14:00}4th
