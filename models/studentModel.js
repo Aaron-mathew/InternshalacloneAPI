@@ -3,6 +3,28 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const studentModel = new mongoose.Schema({
+    firstname: {
+        type: String,
+        required: [true, "First Name is required"],
+        minLength: [4, "First name should be atleast 4 characters long"]
+    },
+    lastname: {
+        type: String,
+        required: [true, "Last Name is required"],
+        minLength: [4, "Last name should be atleast 4 characters long"]
+    },
+    contact: {
+        type: String,
+        required: [true, "Contact is required"],
+        maxLength: [10, "Contact must not exceed 10 characters"],
+        minLength: [10, "Contact should be atleast 4 characters long"],
+    },
+    city: {
+        type: String,
+        required: [true, "City Name is required"],
+        minLength: [3, "City should be atleast 3 characters long"]
+    },
+    gender: {type: String, enum: ["Male","Female","Others"]},
     email: {
         type: String,
         unique: true,
@@ -20,6 +42,7 @@ const studentModel = new mongoose.Schema({
         type: String,
         default: "0",
     },
+    avatar: String,
 },
 {timestamps:true});
 
@@ -46,3 +69,4 @@ const Student = mongoose.model("student", studentModel);
 
 module.exports = Student;
 
+// {Video 0:08:02}6th

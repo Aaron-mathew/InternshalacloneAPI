@@ -64,5 +64,3 @@ exports.studentresetpassword = catchAsyncErrors(async (req, res, next) => {
     await student.save();
     sendtoken(student, 201, res);
 });
-
-// {6th Video}
