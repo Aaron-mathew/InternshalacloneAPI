@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { homepage, currentUser, studentsignup, studentsignin, studentsignout, studentsendmail, studentforgetlink, studentresetpassword} = require("../controllers/indexController");
+const { homepage, currentUser, studentsignup, studentsignin, studentsignout, studentsendmail, studentforgetlink, studentresetpassword, studentupdate} = require("../controllers/indexController");
 const { isAuthenticated } = require("../middlewares/auth");
 
 
@@ -27,6 +27,10 @@ router.get("/student/forget-link/:id", studentforgetlink);
 
 // POST /student/reset-password/:studenttid
 router.post("/student/reset-password/:id",isAuthenticated, studentresetpassword);
+
+// POST /student/update/:studenttid
+router.post("/student/update/:id",isAuthenticated, studentupdate);
+
 
 module.exports = router;
 

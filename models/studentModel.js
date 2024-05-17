@@ -69,4 +69,4 @@ const Student = mongoose.model("student", studentModel);
 
 module.exports = Student;
 
-// {Video 0:08:02}6th
+// {Video 0:15:00}6th
