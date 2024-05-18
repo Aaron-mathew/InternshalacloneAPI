@@ -17,7 +17,7 @@ const studentModel = new mongoose.Schema({
         type: String,
         required: [true, "Contact is required"],
         maxLength: [10, "Contact must not exceed 10 characters"],
-        minLength: [10, "Contact should be atleast 4 characters long"],
+        minLength: [10, "Contact should be atleast 10 characters long"],
     },
     city: {
         type: String,
