@@ -42,7 +42,13 @@ const studentModel = new mongoose.Schema({
         type: String,
         default: "0",
     },
-    avatar: String,
+    avatar: {
+        type: Object,
+        default:{
+            fileid: "",
+            url: "https://plus.unsplash.com/premium_photo-1708110921253-7eed6d2ecb78?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",    
+        }
+    },
 },
 {timestamps:true});
 
@@ -69,4 +75,3 @@ const Student = mongoose.model("student", studentModel);
 
 module.exports = Student;
 
-// {Video 0:15:00}6th

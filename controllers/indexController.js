@@ -3,6 +3,8 @@ const Student = require("../models/studentModel");
 const ErrorHandler = require("../utils/ErrorHandler");
 const { sendtoken } = require("../utils/SendToken");
 const { sendmail } = require("../utils/nodemailer");
+const path = require("path");
+const imagekit = require("../utils/imagekit").initImageKit();
 
 exports.homepage = catchAsyncErrors(async (req, res, next) => {
     res.json({ message: "Secure Homepage!"});
@@ -71,4 +73,15 @@ exports.studentupdate = catchAsyncErrors(async (req, res, next) => {
         success: true,
         message: "Student Updated Successfully!",
     });
+});
+
+exports.studentavatar = catchAsyncErrors(async (req, res, next) => {
+    const student = await Student.findById(req.params.id).exec();
+    const file = req.file.avatar;
+    const modifiedFilename =`resumebuilder-${Date.now()}${path.extname(file.name)}`;
+    const {image} = await imagekit.upload({
+        file: file.data,
+        fileName: modifiedFilename,
+    })
+    res.json({image});
 });

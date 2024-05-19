@@ -23,6 +23,9 @@ app.use(session({
 }))
 app.use(cookieparser());//used to kepp user logged in a browser until expiry
 
+//express file-upload
+const fileupload = require("express-fileupload");
+app.use(fileupload());
 
 //routes
 app.use("/", require("./routes/indexRoutes"));
