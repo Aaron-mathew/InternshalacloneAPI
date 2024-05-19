@@ -1,3 +1,4 @@
+const { userInfo } = require("os");
 const { catchAsyncErrors } = require("../middlewares/catchAsyncErrors");
 const Student = require("../models/studentModel");
 const ErrorHandler = require("../utils/ErrorHandler");
@@ -77,11 +78,22 @@ exports.studentupdate = catchAsyncErrors(async (req, res, next) => {
 
 exports.studentavatar = catchAsyncErrors(async (req, res, next) => {
     const student = await Student.findById(req.params.id).exec();
-    const file = req.file.avatar;
+    const file = req.files.avatar;
     const modifiedFilename =`resumebuilder-${Date.now()}${path.extname(file.name)}`;
-    const {image} = await imagekit.upload({
+    if(student.avatar.fileId !== ""){
+        await imagekit.deleteFile(student.avatar.fileId);
+    }
+
+    const { fileId,url } = await imagekit.upload({
         file: file.data,
         fileName: modifiedFilename,
-    })
-    res.json({image});
+    });
+    student.avatar = { fileId, url };
+    await student.save()
+    res.status(200).json({
+        success: true,
+        message: "Profile Updated!",
+    });
 });
+
+//{Video 7th}
