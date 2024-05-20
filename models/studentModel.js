@@ -34,8 +34,8 @@ const studentModel = new mongoose.Schema({
     password: {
         type: String,
         select: false,
-        maxLength: [15,"Passwrod should not exceed more than 15 characters"],
-        minLength: [6,"Passwrod should should have atleast 6 characters"],
+        maxLength: [15,"Password should not exceed more than 15 characters"],
+        minLength: [6,"Password should have atleast 6 characters"],
         //match: []
     },
     resetPasswordToken: {
@@ -61,9 +61,9 @@ studentModel.pre("save", function() {
 });
 //will work before saving studentModel
 
-studentModel.methods.comparepassword = function(password){
+studentModel.methods.comparepassword = function(password) {
     return bcrypt.compareSync(password, this.password);
-};//copares password using bcrypt
+};//compares password using bcrypt
 
 studentModel.methods.getjwttoken = function(){
     return jwt.sign({id: this._id}, process.env.JWT_SECRET, {

@@ -8,9 +8,8 @@ exports.generatedErrors = (err, req, res, next) => {
     res.status(statusCode).json({
         message: err.message,
         errName: err.name,
-        // stack: err.stack,
+        stack: err.stack,
 //This will handle our synchronus error 
     });
 };
 
-//{Video 0:25:31}
