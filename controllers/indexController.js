@@ -96,4 +96,4 @@ exports.studentavatar = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-//{Video 7th}
+
