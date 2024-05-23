@@ -30,5 +30,3 @@ exports.deleteeducation = catchAsyncErrors(async (req, res, next) => {
     await student.save();
     res.json({ message: "Education Deleted!"});
 });
-
-// {8th Video}
