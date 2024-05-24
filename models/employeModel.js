@@ -79,5 +79,3 @@ employeModel.methods.getjwttoken = function(){
 const Employe = mongoose.model("employee", employeModel);
 
 module.exports = Employe;
-
-// {0:06:46 Video}8th
