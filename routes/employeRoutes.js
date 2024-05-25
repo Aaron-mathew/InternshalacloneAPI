@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const { homepage, 
-    // currentUser, studentsignup, studentsignin, studentsignout, studentsendmail, studentforgetlink, studentresetpassword, studentupdate, studentavatar
+    // currentUser, 
+    employesignup, 
+    // studentsignin, studentsignout, studentsendmail, studentforgetlink, studentresetpassword, studentupdate, studentavatar
 } = require("../controllers/employeController");
 const { isAuthenticated } = require("../middlewares/auth");
 
@@ -12,8 +14,8 @@ router.get("/", homepage);
 // // POST /student
 // router.post("/student", isAuthenticated, currentUser);
 
-// // POST /student/signup
-// router.post("/student/signup", studentsignup);
+// POST /employe/signup
+router.post("/employe/signup", employesignup);
 
 // // POST /student/signin
 // router.post("/student/signin", studentsignin);
@@ -39,4 +41,3 @@ router.get("/", homepage);
 
 module.exports = router;
 
-//{0:11:15 Video}8th

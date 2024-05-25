@@ -16,10 +16,10 @@ exports.homepage = catchAsyncErrors(async (req, res, next) => {
 //     res.json({ student });
 // });
 
-// exports.studentsignup = catchAsyncErrors(async (req, res, next) => {
-//     const student = await new Student(req.body).save();
-//     sendtoken(student, 201, res);
-// });
+exports.employesignup = catchAsyncErrors(async (req, res, next) => {
+    const employe = await new Employe(req.body).save();
+    sendtoken(employe, 201, res);
+});
 
 // exports.studentsignin = catchAsyncErrors(async (req, res, next) => {
 //     const student = await Student.findOne({email: req.body.email}).select("+password").exec();
@@ -97,3 +97,4 @@ exports.homepage = catchAsyncErrors(async (req, res, next) => {
 // });
 
 
+//{0:12:10 Video}8th
