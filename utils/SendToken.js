@@ -1,5 +1,5 @@
-exports.sendtoken = (student, statusCode, res) => {
-    const token = student.getjwttoken(); //getting token from studentsignup or studentsign from getjwttoken
+exports.sendtoken = (employe, statusCode, res) => {
+    const token = employe.getjwttoken(); //getting token from studentsignup or studentsign from getjwttoken
     //we need to put this token in cookies to send it forward
     const options = {
         expires: new Date(
@@ -9,7 +9,7 @@ exports.sendtoken = (student, statusCode, res) => {
         // secure: true,
     };
 
-    res.status(statusCode).cookie("token", token, options).json({ success: true, id: student._id, token});
+    res.status(statusCode).cookie("token", token, options).json({ success: true, id: employe._id, token});
 
 };
 

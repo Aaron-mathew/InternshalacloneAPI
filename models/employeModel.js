@@ -39,7 +39,7 @@ const employeModel = new mongoose.Schema({
     organizationname: {
         type: String,
         required: [true, "Organization Name is required"],
-        minLength: [4, "Organization name should be atleast 4 characters long"]
+        minLength: [4, "Organization Name should be atleast 4 characters long"]
     },
     organizationlogo: {
         type: Object,

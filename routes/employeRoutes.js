@@ -15,7 +15,7 @@ router.get("/", homepage);
 // router.post("/student", isAuthenticated, currentUser);
 
 // POST /employe/signup
-router.post("/employe/signup", employesignup);
+router.post("/signup", employesignup);
 
 // // POST /student/signin
 // router.post("/student/signin", studentsignin);
@@ -41,3 +41,4 @@ router.post("/employe/signup", employesignup);
 
 module.exports = router;
 
+// { 0:16:24 Video}8th
