@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const { homepage, 
-    // currentUser, 
+    currentEmploye, 
     employesignup, 
-    // studentsignin, studentsignout, studentsendmail, studentforgetlink, studentresetpassword, studentupdate, studentavatar
+    employesignin,
+    employesignout, 
+    // employesendmail, employeforgetlink, employeresetpassword, employeupdate, employeavatar
 } = require("../controllers/employeController");
 const { isAuthenticated } = require("../middlewares/auth");
 
@@ -11,34 +13,33 @@ const { isAuthenticated } = require("../middlewares/auth");
 // GET /
 router.get("/", homepage);
 
-// // POST /student
-// router.post("/student", isAuthenticated, currentUser);
+// POST /employe
+router.post("/current", isAuthenticated, currentEmploye);
 
 // POST /employe/signup
 router.post("/signup", employesignup);
 
-// // POST /student/signin
-// router.post("/student/signin", studentsignin);
+// POST /employe/signin
+router.post("/signin", employesignin);
 
-// // GET /student/signout
-// router.get("/student/signout", isAuthenticated, studentsignout);
+// GET /employe/signout
+router.get("/signout", isAuthenticated, employesignout);
 
-// // POST /student/send-mail
-// router.post("/student/send-mail", studentsendmail);
+// // POST /employe/send-mail
+// router.post("/employe/send-mail", employesendmail);
 
-// // GET /student/forget-link/:studentid
-// router.get("/student/forget-link/:id", studentforgetlink);
+// // GET /employe/forget-link/:employeid
+// router.get("/employe/forget-link/:id", employeforgetlink);
 
-// // POST /student/reset-password/:studentid
-// router.post("/student/reset-password/:id",isAuthenticated, studentresetpassword);
+// // POST /employe/reset-password/:employeid
+// router.post("/employe/reset-password/:id",isAuthenticated, employeresetpassword);
 
-// // POST /student/update/:studentid
-// router.post("/student/update/:id",isAuthenticated, studentupdate);
+// // POST /employe/update/:employeid
+// router.post("/employe/update/:id",isAuthenticated, employeupdate);
 
-// // POST /student/avatar/:studentid
-// router.post("/student/avatar/:id",isAuthenticated, studentavatar);
+// // POST /employe/avatar/:employeid
+// router.post("/employe/avatar/:id",isAuthenticated, employeavatar);
 
 
 module.exports = router;
 
-// { 0:16:24 Video}8th
