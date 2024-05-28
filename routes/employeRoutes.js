@@ -5,7 +5,9 @@ const { homepage,
     employesignup, 
     employesignin,
     employesignout, 
-    // employesendmail, employeforgetlink, employeresetpassword, employeupdate, employeavatar
+    employesendmail, 
+    employeforgetlink, 
+    // employeresetpassword, employeupdate, employeavatar
 } = require("../controllers/employeController");
 const { isAuthenticated } = require("../middlewares/auth");
 
@@ -25,11 +27,11 @@ router.post("/signin", employesignin);
 // GET /employe/signout
 router.get("/signout", isAuthenticated, employesignout);
 
-// // POST /employe/send-mail
-// router.post("/employe/send-mail", employesendmail);
+// POST /employe/send-mail
+router.post("/send-mail", employesendmail);
 
-// // GET /employe/forget-link/:employeid
-// router.get("/employe/forget-link/:id", employeforgetlink);
+// GET /employe/forget-link/:employeid
+router.get("/forget-link/:id", employeforgetlink);
 
 // // POST /employe/reset-password/:employeid
 // router.post("/employe/reset-password/:id",isAuthenticated, employeresetpassword);

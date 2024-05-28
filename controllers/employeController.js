@@ -36,30 +36,30 @@ exports.employesignout = catchAsyncErrors(async (req, res, next) => {
     res.json({ message: "Successfully signout!"});
 });
 
-// exports.employesendmail = catchAsyncErrors(async (req, res, next) => {
-//     const employe = await employe.findOne({email: req.body.email}).exec()
-//     if(!employe) return next(new ErrorHandler("User not found with this email address", 404));
-//     const url = `${req.protocol}://${req.get("host")}/employe/forget-link/${employe._id}`; //url to send to nodemailer
-//     sendmail(req, res, next, url);
-//     employe.resetPasswordToken = "1";
-//     await employe.save();
-//     res.json({ employe, url});
-// });
+exports.employesendmail = catchAsyncErrors(async (req, res, next) => {
+    const employe = await Employe.findOne({email: req.body.email}).exec()
+    if(!employe) return next(new ErrorHandler("User not found with this email address", 404));
+    const url = `${req.protocol}://${req.get("host")}/employe/forget-link/${employe._id}`; //url to send to nodemailer
+    sendmail(req, res, next, url);
+    employe.resetPasswordToken = "1";
+    await employe.save();
+    res.json({ employe, url});
+});
 
-// exports.employeforgetlink = catchAsyncErrors(async (req, res, next) => {
-//     const employe = await employe.findById(req.params.id).exec()
-//     if(!employe) return next(new ErrorHandler("User not found with this email address", 404));
-//     if(employe.resetPasswordToken == "1"){
-//         employe.resetPasswordToken = "0";//only one password can be generated through one link
-//         employe.password = req.body.password;//will checkin employe model
-//         await employe.save();
-//     }else{
-//         return next(new ErrorHandler("Invalid Reset Password Link! Please try again", 500));
-//     }
-//     res.status(200).json({
-//         message: "Password has been successfully changed",
-//     })
-// });
+exports.employeforgetlink = catchAsyncErrors(async (req, res, next) => {
+    const employe = await Employe.findById(req.params.id).exec()
+    if(!employe) return next(new ErrorHandler("User not found with this email address", 404));
+    if(employe.resetPasswordToken == "1"){
+        employe.resetPasswordToken = "0";//only one password can be generated through one link
+        employe.password = req.body.password;//will checkin employe model
+        await employe.save();
+    }else{
+        return next(new ErrorHandler("Invalid Reset Password Link! Please try again", 500));
+    }
+    res.status(200).json({
+        message: "Password has been successfully changed",
+    })
+});
 
 // exports.employeresetpassword = catchAsyncErrors(async (req, res, next) => {
 //     const employe = await employe.findById(req.id).exec();
@@ -97,4 +97,4 @@ exports.employesignout = catchAsyncErrors(async (req, res, next) => {
 // });
 
 
-// { 9th Video}
+// { 08:00 Video}9th
