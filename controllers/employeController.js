@@ -61,40 +61,40 @@ exports.employeforgetlink = catchAsyncErrors(async (req, res, next) => {
     })
 });
 
-// exports.employeresetpassword = catchAsyncErrors(async (req, res, next) => {
-//     const employe = await employe.findById(req.id).exec();
-//     employe.password = req.body.password;
-//     await employe.save();
-//     sendtoken(employe, 201, res);
-// });
+exports.employeresetpassword = catchAsyncErrors(async (req, res, next) => {
+    const employe = await Employe.findById(req.id).exec();
+    employe.password = req.body.password;
+    await employe.save();
+    sendtoken(employe, 201, res);
+});
 
-// exports.employeupdate = catchAsyncErrors(async (req, res, next) => {
-//     await employe.findByIdAndUpdate(req.params.id,req.body).exec();
-//     res.status(200).json({
-//         success: true,
-//         message: "employe Updated Successfully!",
-//     });
-// });
+exports.employeupdate = catchAsyncErrors(async (req, res, next) => {
+    await Employe.findByIdAndUpdate(req.params.id,req.body).exec();
+    res.status(200).json({
+        success: true,
+        message: "employe Updated Successfully!",
+    });
+});
 
-// exports.employeavatar = catchAsyncErrors(async (req, res, next) => {
-//     const employe = await employe.findById(req.params.id).exec();
-//     const file = req.files.avatar;
-//     const modifiedFilename =`resumebuilder-${Date.now()}${path.extname(file.name)}`;
-//     if(employe.avatar.fileId !== ""){
-//         await imagekit.deleteFile(employe.avatar.fileId);
-//     }
+exports.employeavatar = catchAsyncErrors(async (req, res, next) => {
+    const employe = await Employe.findById(req.params.id).exec();
+    const file = req.files.organizationlogo;
+    const modifiedFilename =`resumebuilder-${Date.now()}${path.extname(file.name)}`;
+    if(employe.organizationlogo.fileId !== ""){
+        await imagekit.deleteFile(employe.organizationlogo.fileId);
+    }
 
-//     const { fileId,url } = await imagekit.upload({
-//         file: file.data,
-//         fileName: modifiedFilename,
-//     });
-//     employe.avatar = { fileId, url };
-//     await employe.save()
-//     res.status(200).json({
-//         success: true,
-//         message: "Profile Updated!",
-//     });
-// });
+    const { fileId,url } = await imagekit.upload({
+        file: file.data,
+        fileName: modifiedFilename,
+    });
+    employe.organizationlogo = { fileId, url };
+    await employe.save()
+    res.status(200).json({
+        success: true,
+        message: "Profile Updated!",
+    });
+});
 
 
-// { 08:00 Video}9th
+// {10th Video}
