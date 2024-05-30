@@ -97,4 +97,3 @@ exports.employeavatar = catchAsyncErrors(async (req, res, next) => {
 });
 
 
-// {10th Video}
