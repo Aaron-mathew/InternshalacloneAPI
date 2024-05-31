@@ -27,4 +27,3 @@ const Internship = mongoose.model("internship", internshipModel);
 
 module.exports = Internship;
 
-// {09:02 Video}10th
