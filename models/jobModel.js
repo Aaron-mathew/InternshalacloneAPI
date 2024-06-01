@@ -19,4 +19,3 @@ const Job = mongoose.model("job", jobModel);
 
 module.exports = Job;
 
-// {13:20 Video}10th
