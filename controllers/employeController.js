@@ -100,8 +100,23 @@ exports.employeavatar = catchAsyncErrors(async (req, res, next) => {
 // ----------------------- Internship -----------------
 
 exports.createinternship = catchAsyncErrors(async (req, res, next) => {
-    const internship = await new Internship(req.body).save();
+    const employe = await Employe.findById(req.id).exec();
+    const internship = await new Internship(req.body);
+    internship.employe = employe._id;
+    employe.internships.push(internship._id);
+    await internship.save();
+    await employe.save();
     res.status(201).json({ success: true, internship});
 });
 
-// {11th Video}
+exports.readinternship = catchAsyncErrors(async (req, res, next) => {
+    const { internships } = await Employe.findById(req.id).populate("internships").exec();
+    res.status(200).json({ success: true, internships});
+});
+
+exports.readsingleinternship = catchAsyncErrors(async (req, res, next) => {
+    const internship = await Internship.findById(req.params.id).exec();
+    res.status(200).json({ success: true, internship});
+});
+
+// {15:41 Video}11th
