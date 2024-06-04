@@ -142,4 +142,3 @@ exports.readsinglejob = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({ success: true, job});
 });
 
-// {20:47 Video}11th

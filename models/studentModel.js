@@ -59,6 +59,12 @@ const studentModel = new mongoose.Schema({
         skills: [],
         accomplishments: [],
     },
+    internships: [
+        {type: mongoose.Schema.Types.ObjectId, ref: 'internship'}
+    ],
+    jobs: [
+        {type: mongoose.Schema.Types.ObjectId, ref: 'job'}
+    ],
 },
 {timestamps:true});
 
@@ -85,3 +91,4 @@ const Student = mongoose.model("student", studentModel);
 
 module.exports = Student;
 
+// {12th Video}
