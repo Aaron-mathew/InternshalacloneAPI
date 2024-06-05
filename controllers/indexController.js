@@ -1,6 +1,8 @@
 const { userInfo } = require("os");
 const { catchAsyncErrors } = require("../middlewares/catchAsyncErrors");
 const Student = require("../models/studentModel");
+const Internship = require("../models/internshipModel");
+const Job = require("../models/jobModel");
 const ErrorHandler = require("../utils/ErrorHandler");
 const { sendtoken } = require("../utils/SendToken");
 const { sendmail } = require("../utils/nodemailer");
@@ -96,4 +98,21 @@ exports.studentavatar = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
+// ----------------------- Apply Internship -----------------
 
+exports.applyinternship = catchAsyncErrors(async (req, res, next) => {
+    const student = await Student.findById(req.id).exec();
+    const internship = await Internship.findById(req.params.internshipid).exec();
+    student.internships.push(internship._id);
+    internship.students.push(student._id);
+    await student.save();
+    await intermship.save();
+    res.json({ student });
+});
+
+// ----------------------- Apply Job -----------------
+
+exports.applyjob = catchAsyncErrors(async (req, res, next) => {
+    const student = await Student.findById(req.id).exec();
+    res.json({ student });
+});
