@@ -106,7 +106,7 @@ exports.applyinternship = catchAsyncErrors(async (req, res, next) => {
     student.internships.push(internship._id);
     internship.students.push(student._id);
     await student.save();
-    await intermship.save();
+    await internship.save();
     res.json({ student });
 });
 
