@@ -107,12 +107,19 @@ exports.applyinternship = catchAsyncErrors(async (req, res, next) => {
     internship.students.push(student._id);
     await student.save();
     await internship.save();
-    res.json({ student });
+    res.json({ student, internship });
 });
 
 // ----------------------- Apply Job -----------------
 
 exports.applyjob = catchAsyncErrors(async (req, res, next) => {
     const student = await Student.findById(req.id).exec();
-    res.json({ student });
+    const job = await Job.findById(req.params.jobid).exec();
+    student.jobs.push(job._id);
+    job.students.push(student._id);
+    await student.save();
+    await job.save();
+    res.json({ student, job });
 });
+
+// { 12:07 Video}12th
